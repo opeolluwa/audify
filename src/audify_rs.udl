@@ -1,0 +1,16 @@
+namespace audify_rs {
+
+enum Languages {
+    English,
+}
+
+dictionary Audify {
+    Languages language;
+    string model_path;
+    string export_path;
+    string source;
+    string config_path;
+    i64 sid;
+}
+
+}

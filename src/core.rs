@@ -3,6 +3,7 @@ use piper_rs::synth::PiperSpeechSynthesizer;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
+// #[uniffi::export]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Audify {
     language: Languages,
@@ -27,6 +28,7 @@ impl Default for Audify {
 }
 
 impl Audify {
+    // #[uniffi::export]
     pub fn new() -> Self {
         Self {
             // export_path: export_path.to_string(),
@@ -34,7 +36,7 @@ impl Audify {
         }
     }
 
-    // source: source.to_string()
+    // #[uniffi::export]
     pub fn synthesize(&self, source_path: &str, export_path: &str) -> Result<(), AudifyError> {
         let text = extract_pdf_source(source_path).unwrap();
 

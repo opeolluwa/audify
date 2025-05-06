@@ -1,4 +1,4 @@
-use crate::{error::SynthesisError, languages::Languages};
+use crate::{error::AudifyError, extractor::extract_pdf_source, languages::Languages};
 use piper_rs::synth::PiperSpeechSynthesizer;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
@@ -35,8 +35,9 @@ impl Audify {
     }
 
     // source: source.to_string()
-    pub fn synthesize(&self, source: &str) -> Result<(), SynthesisError> {
-        let text = source.to_string();
+    pub fn synthesize(&self, source: &str) -> Result<(), AudifyError> {
+        // let text = source.to_string();
+        let text = extract_pdf_source("test3.pdf")?;
 
         let model = piper_rs::from_config_path(Path::new(&self.config_path)).unwrap();
 

@@ -1,7 +1,9 @@
 use thiserror::Error;
 
 #[derive(Error, Debug)]
-pub enum SynthesisError {
+pub enum AudifyError {
     #[error("Error encoding source")]
     AudioEndoingError,
+    #[error("PDF extract error")]
+    TextExtractError,
 }

@@ -1,6 +1,6 @@
 fn main() {
-    let audify_rs = audify_rs::core::Audify::new("audio.wav");
-    
-    audify_rs.synthesize("hey man").unwrap();
+    let audify_rs = audify_rs::core::Audify::new();
+
+    audify_rs.synthesize("test2.pdf", "audio2.wav").unwrap();
     println!("done");
 }

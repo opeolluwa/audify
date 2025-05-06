@@ -20,3 +20,7 @@ en_US-libritts_r-medium.onnx.json
 
 config.json
 model.onnx
+
+test*.pdf
+
+audio.wav

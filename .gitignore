@@ -17,3 +17,6 @@ Cargo.lock
 #models from `$ just download-models` 
 en_US-libritts_r-medium.onnx
 en_US-libritts_r-medium.onnx.json
+
+config.json
+model.onnx

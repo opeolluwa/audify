@@ -1,9 +1,12 @@
 [package]
-name = "audify"
+name = "audify-rs"
 version = "0.1.0"
 edition = "2024"
 
-[workspace]
-members = [ "audify","tokenizer"]
+
 
 [dependencies]
+serde = { version = "1.0.219", features = ["derive"] }
+thiserror = "2.0.12"
+
+

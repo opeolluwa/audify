@@ -27,17 +27,16 @@ impl Default for Audify {
 }
 
 impl Audify {
-    pub fn new(export_path: &str) -> Self {
+    pub fn new() -> Self {
         Self {
-            export_path: export_path.to_string(),
+            // export_path: export_path.to_string(),
             ..Default::default()
         }
     }
 
     // source: source.to_string()
-    pub fn synthesize(&self, source: &str) -> Result<(), AudifyError> {
-        // let text = source.to_string();
-        let text = extract_pdf_source("test3.pdf")?;
+    pub fn synthesize(&self, source_path: &str, export_path: &str) -> Result<(), AudifyError> {
+        let text = extract_pdf_source(source_path).unwrap();
 
         let model = piper_rs::from_config_path(Path::new(&self.config_path)).unwrap();
 
@@ -45,7 +44,7 @@ impl Audify {
 
         let synth = PiperSpeechSynthesizer::new(model).unwrap();
         synth
-            .synthesize_to_file(Path::new(&self.export_path), text, None)
+            .synthesize_to_file(Path::new(export_path), text, None)
             .unwrap();
         Ok(())
     }

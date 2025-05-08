@@ -3,6 +3,7 @@ name = "audify-rs"
 description = "convert PDF to audio files"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 
 

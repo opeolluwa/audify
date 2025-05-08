@@ -36,16 +36,18 @@ impl Audify {
 
     // source: source.to_string()
     pub fn synthesize(&self, source_path: &str, export_path: &str) -> Result<(), AudifyError> {
-        let text = extract_pdf_source(source_path).unwrap();
+        let text = extract_pdf_source(source_path)?;
 
-        let model = piper_rs::from_config_path(Path::new(&self.config_path)).unwrap();
+        let model = piper_rs::from_config_path(Path::new(&self.config_path))
+            .map_err(AudifyError::ModelLoadError)?;
 
         model.set_speaker(self.sid);
 
-        let synth = PiperSpeechSynthesizer::new(model).unwrap();
+        let synth = PiperSpeechSynthesizer::new(model)
+            .map_err(AudifyError::PiperSpeechSynthesizerInitializationError)?;
         synth
             .synthesize_to_file(Path::new(export_path), text, None)
-            .unwrap();
+            .map_err(AudifyError::FileSynthesizeError)?;
         Ok(())
     }
 }

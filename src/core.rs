@@ -3,7 +3,7 @@ use piper_rs::synth::PiperSpeechSynthesizer;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, uniffi::Object)]
 pub struct Audify {
     /// language or model to use see https://github.com/rhasspy/piper/blob/master/VOICES.md
     language: Languages,
@@ -28,6 +28,7 @@ impl Default for Audify {
     }
 }
 
+#[uniffi::export]
 impl Audify {
     /// create a new Audify instance
     ///
@@ -43,18 +44,15 @@ impl Audify {
     ///  let pdf_export_path = "out_pdf.wav";
     ///
     ///   let audify_rs = Audify::new(config_path);
-
     ///  audify_rs.synthesize_text(source_text, raw_export_path)?;
     ///  audify_rs.synthesize_pdf(pdf_path, pdf_export_path)?;
     ///
     ///   println!("done");
-
     ///   Ok(())
     /// }
-
     /// ```
-
     ///
+    #[uniffi::constructor]
     pub fn new(config_path: &str) -> Self {
         Self {
             config_path: config_path.to_string(),

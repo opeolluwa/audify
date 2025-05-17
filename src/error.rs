@@ -1,7 +1,8 @@
 use piper_rs::PiperError;
 use thiserror::Error;
 
-#[derive(Error, Debug)]
+#[derive(Error, Debug, uniffi::Error)]
+#[uniffi(flat_error)]
 pub enum AudifyError {
     #[error("Error encoding source")]
     AudioEndoingError,

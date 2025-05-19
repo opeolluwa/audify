@@ -1,6 +1,6 @@
 # audify-rs
 
-Convert PDF to audio files, usable in mobile, servers and desktop applications.
+Shared library and bindings for [project Echo](https://github.com/opeolluwa/echo) a cross platform application to convert PDF to audio files, usable in mobile, servers and desktop applications.
 
 ## Why use Rust?
 
@@ -27,10 +27,6 @@ just download-models
 ```sh
 cargo run --example audio
 ```
-
-## Use cases
-
-- [Audify Client](https://github.com/opeolluwa/audify-client) An application targeting major desktop and mobile operating system, built on [audify-rs](https://github.com/opeolluwa/audify-rs) and [Tauri apps](https://tauri.app/)
 
 ## License
 
